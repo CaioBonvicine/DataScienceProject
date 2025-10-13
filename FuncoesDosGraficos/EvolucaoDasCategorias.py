@@ -8,7 +8,7 @@ def grafico_categorias_em_crescimento(ds):
     decada = ds[ds['ano'] >= ultimo_ano - 10]
     vendas_por_ano = decada.groupby(['ano', 'category'])['quantity'].sum().unstack()
     
-    crescimento = (vendas_por_ano.iloc[-1] - vendas_por_ano.iloc[0]) / vendas_por_ano.iloc[0].replace(0, 1)
+    crescimento = (vendas_por_ano.iloc[-1] - vendas_por_ano.iloc[0]) / vendas_por_ano.iloc[0]
 
     top_5 = crescimento.nlargest(5)
     
